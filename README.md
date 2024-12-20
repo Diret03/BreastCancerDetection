@@ -40,6 +40,7 @@ Simple Flask Web App
 **Install python dependencies**
 ```bash
     pip install -r requirements.txt
+    deactivate
 ```
 
 **Install npm dependencies**

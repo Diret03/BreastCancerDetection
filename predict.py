@@ -3,10 +3,12 @@ import numpy as np
 import joblib
 
 # Get prefitted scaler
+# This scaler was fitted previously based on the train data from sklearn breast cancer dataset
 scaler = joblib.load('./models/scaler.joblib')
 
 
 def load_model():
+    #Load sequential tensorflow model created and trained previously
     loaded_model = tf.keras.models.load_model('./models/breast_cancer_model.h5')
     print("Model loaded.")
     return loaded_model
@@ -15,8 +17,8 @@ def load_model():
 model = load_model()
 
 
-def transform_data(dict):
-    values = dict.values()
+def transform_data(features_dict):
+    values = features_dict.values()
     arr = np.array(list(values), dtype=float)
     # print(f"Array: {arr}")
 
@@ -41,8 +43,8 @@ def make_prediction(features):
 
     return prediction[0][0]
 
-
-test_dict = {
+#dict with true output(malign tumor)
+true_dict = {
     'mean_radius': 12.470,
     'mean_texture': 18.60,
     'mean_perimeter': 81.09,
@@ -75,8 +77,7 @@ test_dict = {
     'worst_fractal_dimension': 0.08750
 }
 
-
-
+#dict with false output(benign tumor)
 false_dict = {
     'mean_radius': 0.550908,
     'mean_texture': 0.392289,
@@ -111,5 +112,5 @@ false_dict = {
 }
 
 if __name__ == "__main__":
+    #test the make_prediction function with sample data
     make_prediction(false_dict)
-
