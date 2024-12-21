@@ -9,7 +9,7 @@ Simple Flask Web App
 ## Authors
 
 - [@Diret03](https://github.com/Diret03/)
-
+- ...
 
 ## Installation
 
